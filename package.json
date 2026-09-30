@@ -1,8 +1,13 @@
 {
 	"name": "5c-index",
-	"version": "0.1.0",
+	"version": "0.4.0",
 	"private": true,
 	"description": "5C Index — search engine for Claremont Colleges (5C) classes. CLI + MCP + skill.",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/notkainoa/5C-Index.git"
+	},
 	"type": "module",
 	"packageManager": "pnpm@9.0.0",
 	"engines": {

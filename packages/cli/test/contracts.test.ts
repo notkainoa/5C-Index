@@ -1,4 +1,5 @@
 import { execFile } from "node:child_process";
+import { readFileSync } from "node:fs";
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
@@ -400,7 +401,11 @@ describe("terms, history, version, schema", () => {
 		});
 		expect(res.code).toBe(0);
 		const data = json(res).data as { version: string };
-		expect(data.version).toBe("0.1.0");
+		// version must match the package it ships in, not a hardcoded constant
+		const pkg = JSON.parse(
+			readFileSync(join(packageRoot, "package.json"), "utf8"),
+		) as { version: string };
+		expect(data.version).toBe(pkg.version);
 		expect(fixture.requests.length).toBe(before);
 	});
 

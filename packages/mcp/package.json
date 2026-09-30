@@ -1,14 +1,33 @@
 {
 	"name": "5c-mcp",
-	"version": "0.1.0",
-	"description": "5C Index MCP server \u2014 5 tools over the shared 5c-core engine.",
+	"version": "0.4.0",
+	"description": "5C Index MCP server — 5 tools over the shared 5c-core engine.",
 	"type": "module",
+	"license": "MIT",
+	"author": "notkainoa <hi@kainoa.me>",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/notkainoa/5C-Index.git",
+		"directory": "packages/mcp"
+	},
+	"bugs": "https://github.com/notkainoa/5C-Index/issues",
+	"homepage": "https://github.com/notkainoa/5C-Index#readme",
+	"keywords": [
+		"mcp",
+		"model-context-protocol",
+		"5c",
+		"claremont-colleges",
+		"course-search"
+	],
 	"bin": {
 		"5c-mcp": "./dist/server.js"
 	},
 	"files": ["dist"],
 	"engines": {
 		"node": ">=20"
+	},
+	"publishConfig": {
+		"access": "public"
 	},
 	"scripts": {
 		"build": "tsup",

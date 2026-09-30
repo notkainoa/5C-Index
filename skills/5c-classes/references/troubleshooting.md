@@ -11,6 +11,7 @@
 | `E_NO_CURRENT_TERM` / exit 1 | Network down and no cached current term | Pass an explicit term, or run once while online. |
 | `E_FETCH` / exit 1 | Network/upstream failure, or an ingest swap refused because the payload collapsed | Retry once; then report the last snapshot with `fetched_at`. |
 | Empty hits, exit 0 | Query ran, nothing matched | Read `suggestions` first (dept/code guidance); then widen: drop `availability` (`--open`), then days, then schools. Never fabricate. |
+| `5c: command not found` | CLI not on PATH | Run `npx 5c-cli@latest <args>` (downloads once, then cached). Ask the user before `npm i -g 5c-cli`. |
 
 `check` returning `ok: false` is **not** an error: exit 0 means the audit ran and
 the schedule has conflicts.

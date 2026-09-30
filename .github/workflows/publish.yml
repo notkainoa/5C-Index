@@ -1,0 +1,66 @@
+# Publishes to npm on merge to main, but only packages whose version changed.
+# Auth is npm trusted publishing (OIDC): no npm token is stored anywhere.
+#
+# One-time setup per package (npm only allows trusted publishers on packages
+# that already exist, so the first version is published by hand once):
+#   1. npm login, then `npm publish --access public` in the package directory
+#   2. npmjs.com -> package -> Settings -> Trusted Publisher -> GitHub Actions:
+#      owner notkainoa, repository 5C-Index, workflow filename publish.yml
+#   3. Settings -> Publishing access: "Require 2FA and disallow tokens"
+name: publish
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write # OIDC for npm trusted publishing
+
+concurrency:
+  group: npm-publish
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm gate
+      - run: pnpm smoke
+
+  publish:
+    needs: gate
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+      # Node 24 ships npm >= 11.5.1, which trusted publishing requires.
+      # package-manager-cache: false — npm's own advice for release builds.
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - name: Publish new versions only
+        run: |
+          set -euo pipefail
+          for pkg in packages/cli packages/mcp; do
+            name=$(node -p "require('./$pkg/package.json').name")
+            version=$(node -p "require('./$pkg/package.json').version")
+            if npm view "$name@$version" version >/dev/null 2>&1; then
+              echo "$name@$version is already on npm — skipping"
+              continue
+            fi
+            echo "Publishing $name@$version"
+            (cd "$pkg" && npm publish --access public)
+          done

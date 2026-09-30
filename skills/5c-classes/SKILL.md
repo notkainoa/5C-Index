@@ -2,7 +2,7 @@
 name: 5c-classes
 description: Search the Claremont Colleges (5C: Pomona, Claremont McKenna, Harvey Mudd, Scripps, Pitzer) course catalog; check seats, prerequisites, sections, schedules, and terms. Use when the user asks about 5C courses, schedules, enrollment/seats, prerequisites, conflicts, or course history.
 license: MIT
-compatibility: Requires the 5c MCP server (search/get/check tools) or the 5c CLI on PATH; network access to fetch 5C Index snapshots.
+compatibility: Tools ship on npm — CLI via `npx 5c-cli@latest` (`npm i -g 5c-cli` puts `5c` on PATH), or the 5c MCP server (host config `npx -y 5c-mcp`). Node 20+; network access to fetch 5C Index snapshots.
 metadata:
   author: 5C Index
   version: "0.4.0"
@@ -75,6 +75,7 @@ When the user asks for options ("what should I take?", "find me something that f
 | `stale: true`, or fetch failure | Warn, retry once, report the last snapshot with its timestamp |
 | `E_TERM_NOT_FOUND` / exit 2 | Term not published. `list_terms`, then search a real term — or use fallback only with consent |
 | Rejected params (-32602) | Unknown param name — use `availability` (not `open_only`), `instructor` (singular), `credits_min`/`credits_max` |
+| `5c` not on PATH / command not found | Run commands as `npx 5c-cli@latest <args>` — downloads once, then cached. Ask before `npm i -g 5c-cli` |
 
 ## Examples
 

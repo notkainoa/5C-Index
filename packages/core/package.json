@@ -1,6 +1,7 @@
 {
 	"name": "5c-core",
-	"version": "0.1.0",
+	"version": "0.4.0",
+	"private": true,
 	"description": "5C Index core — fetch, cache, normalize, search, conflicts. Zero Node APIs in logic (fetch/fs injected).",
 	"type": "module",
 	"engines": {

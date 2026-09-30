@@ -73,7 +73,9 @@ export function cliVersion(): string {
 		) as { version: string };
 		versionCache = pkg.version;
 	} catch {
-		versionCache = "0.1.0";
+		// readFileSync of the adjacent package.json failed — "unknown" beats a
+		// plausible stale constant.
+		versionCache = "0.0.0";
 	}
 	return versionCache;
 }

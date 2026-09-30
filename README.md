@@ -15,40 +15,29 @@ Requires Node 20 or newer.
 
 ## Install
 
-The CLI and MCP server bundle core, so each installs as a single package:
+Everything is on npm. The CLI and MCP server each bundle core, so each is one
+package — and can be zero-install:
 
 ```bash
-# from this checkout
-pnpm install
-pnpm build
+# CLI, zero install:
+npx 5c-cli@latest search "machine learning" --term FA2026 --json
 
-# CLI: link into your PATH
-npm link ./packages/cli
-5c terms --json
+# CLI, persistent (puts `5c` on PATH):
+npm i -g 5c-cli
 
-# MCP: point your host at the built entry point
-node "$(pwd)/packages/mcp/dist/server.js"   # stdio
-```
-
-A host config (Claude Code, Cursor, Codex, Desktop) needs an absolute path, not a
-relative one, because the host's working directory is not this repository:
-
-```json
+# MCP — no clone, no build; add to Claude Code / Codex / Cursor / Desktop:
 {
   "mcpServers": {
-    "5c-index": { "command": "node", "args": ["/ABSOLUTE/PATH/packages/mcp/dist/server.js"] }
+    "5c-index": { "command": "npx", "args": ["-y", "5c-mcp"] }
   }
 }
+
+# skill:
+npx skills add notkainoa/5C-Index --skill 5c-classes -a claude-code -a codex -a cursor
 ```
 
-The skill installs separately (update `<owner>` to the real repository owner):
-
-```bash
-npx skills add <owner>/5C-Index --skill 5c-classes -a claude-code -a codex -a cursor
-```
-
-For caller-supplied data, `FIVE_C_API_BASE` overrides the upstream base URL and
-`FIVE_C_DATA_DIR` overrides the cache directory.
+Requires Node 20 or newer. For caller-supplied data, `FIVE_C_API_BASE` overrides
+the upstream base URL and `FIVE_C_DATA_DIR` overrides the cache directory.
 
 ## Quick start
 
@@ -85,7 +74,7 @@ resolves only when it is unique — several matches come back as candidates.
 Stdio (default):
 
 ```bash
-node packages/mcp/dist/server.js
+npx -y 5c-mcp
 ```
 
 Experimental stateless Streamable HTTP on localhost (`POST /mcp`). It binds
@@ -93,7 +82,7 @@ Experimental stateless Streamable HTTP on localhost (`POST /mcp`). It binds
 distribution yet:
 
 ```bash
-node packages/mcp/dist/server.js --http --port 3000
+npx -y 5c-mcp --http --port 3000
 ```
 
 Tools: `search_classes` · `get_classes` · `check_schedule` · `list_terms` · `get_course_history`.
@@ -103,6 +92,15 @@ All five are read-only (`readOnlyHint: true`), touch the network (`openWorldHint
 School codes are registrar-canonical: `CM` (Claremont McKenna; `CMC` accepted as an alias), plus `CG`.
 
 ## Develop
+
+```bash
+git clone https://github.com/notkainoa/5C-Index
+cd 5C-Index
+pnpm install
+pnpm build
+npm link ./packages/cli              # `5c` on PATH from this checkout
+node ./packages/mcp/dist/server.js  # MCP from this checkout (needs pnpm build)
+```
 
 ```bash
 pnpm build
@@ -122,6 +120,15 @@ expectations live in `tests/evals/relevance-50.json` and only run under `--live`
 Cache: `~/.5c-index/cache/<TERM>.json` (override with `FIVE_C_DATA_DIR`).
 Seats TTL 60s, schedules 30min, catalog 24h. Every response carries `fetched_at` + `stale`.
 In-process search index is cached per term+hash (repeat search ~3ms vs ~80ms cold-build).
+
+## Releasing
+
+Bump `version` in `packages/cli/package.json` and/or `packages/mcp/package.json`,
+merge to `main`, and `.github/workflows/publish.yml` publishes exactly the
+bumped packages via npm trusted publishing (OIDC — no npm token is stored
+anywhere). Versions already on npm are skipped, so merges without a bump never
+touch the registry. `5c-core` is private and bundled into both; it is never
+published.
 
 ## Attribution
 
