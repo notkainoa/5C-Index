@@ -1,0 +1,12 @@
+{
+	"extends": "../tsconfig.base.json",
+	"compilerOptions": {
+		"rootDir": "src",
+		"outDir": "dist",
+		"noEmit": true,
+		"allowImportingTsExtensions": true,
+		"lib": ["ES2022", "WebWorker"],
+		"types": []
+	},
+	"include": ["src"]
+}

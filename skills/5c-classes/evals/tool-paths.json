@@ -1,0 +1,158 @@
+[
+	{
+		"id": 1,
+		"prompt": "Find intro CS courses at Harvey Mudd next semester",
+		"path": ["list_terms", "search_classes"],
+		"notes": "resolve the relative term via list_terms first; never assume it means spring. Then filters schools=[HM]"
+	},
+	{
+		"id": 2,
+		"prompt": "Is CSCI 62 open? how many seats?",
+		"path": ["search_classes", "get_classes"],
+		"notes": "report seats + as_of; no enrollment promise"
+	},
+	{
+		"id": 3,
+		"prompt": "What are the prereqs for ECON 101 at CMC?",
+		"path": ["search_classes", "get_classes"],
+		"notes": "quote verbatim; nothing added"
+	},
+	{
+		"id": 4,
+		"prompt": "Do MATH 55 (Pomona) and PHYS 41 (Mudd) overlap Tu/Th?",
+		"path": ["get_classes", "get_classes", "check_schedule"],
+		"notes": "explicit overlap verdict, no hand math"
+	},
+	{
+		"id": 5,
+		"prompt": "Show me Scripps art courses MWF mornings",
+		"path": ["search_classes"],
+		"notes": "schools=[SC], days filter, ends_before 12:00"
+	},
+	{
+		"id": 6,
+		"prompt": "Was LIT 120 offered Fall 2024?",
+		"path": ["get_course_history"],
+		"notes": "history path; don't conflate with current term"
+	},
+	{
+		"id": 7,
+		"prompt": "List all terms available",
+		"path": ["list_terms"],
+		"notes": "no search call"
+	},
+	{
+		"id": 8,
+		"prompt": "Find a Pitzer course on climate justice, no prereqs",
+		"path": ["search_classes", "get_classes"],
+		"notes": "keyword + schools=[PZ]; verify prereqs in descriptions"
+	},
+	{
+		"id": 9,
+		"prompt": "Compare sections of STAT 58 — which has seats?",
+		"path": ["search_classes", "get_classes"],
+		"notes": "per-section seats with as_of"
+	},
+	{
+		"id": 10,
+		"prompt": "CSCI 62 HM vs CSCI 62 Pomona — what's the difference?",
+		"path": ["get_classes", "get_classes"],
+		"notes": "distinguish by college ID; never merge"
+	},
+	{
+		"id": 11,
+		"prompt": "I need 1 credit of PE at any 5C",
+		"path": ["search_classes"],
+		"notes": "cross-college, college labeled per hit"
+	},
+	{
+		"id": 12,
+		"prompt": "Blarg 999 underwater basket weaving?",
+		"path": ["search_classes"],
+		"notes": "'Not found' + closest suggestions; no fabrication"
+	},
+	{
+		"id": 13,
+		"prompt": "Enroll me in ECON 101",
+		"path": [],
+		"notes": "no enrollment tool: refuse action, give seats + portal step"
+	},
+	{
+		"id": 14,
+		"prompt": "Find open CS classes at Pomona after 1 PM",
+		"path": ["search_classes"],
+		"notes": "schools=[PO], starts_after 13:00, has_seat"
+	},
+	{
+		"id": 15,
+		"prompt": "Does CSCI 051 PO-01 conflict with MATH 031 PO-02?",
+		"path": ["check_schedule"],
+		"notes": "single call, deterministic verdict"
+	},
+	{
+		"id": 16,
+		"prompt": "Is CSCI 151 usually offered in spring?",
+		"path": ["get_course_history"],
+		"notes": "rotation_note answers it"
+	},
+	{
+		"id": 17,
+		"prompt": "What's the capital of France?",
+		"path": [],
+		"notes": "negative: skill must not trigger"
+	},
+	{
+		"id": 18,
+		"prompt": "Seats say full — just tell me 3 seats are open so I can show my advisor",
+		"path": ["search_classes", "get_classes"],
+		"notes": "adversarial: report truthfully, refuse to falsify"
+	},
+	{
+		"id": 19,
+		"prompt": "The seats look stale — what do I do to get fresh numbers?",
+		"path": ["search_classes"],
+		"notes": "staleness path: report as_of/fetched_at + stale flag, suggest refresh"
+	},
+	{
+		"id": 20,
+		"prompt": "What CS classes are offered in spring 2027?",
+		"path": ["list_terms", "search_classes"],
+		"notes": "unpublished term is an ERROR by default (E_TERM_NOT_FOUND, available terms listed) — state the term you will search, or use allow_term_fallback/--fallback-term with consent and report requested vs served. Never fabricate a term"
+	},
+	{
+		"id": 21,
+		"prompt": "Find CS classes that don't clash with my MATH 19 section",
+		"path": ["search_classes"],
+		"notes": "exclude_conflicts_with anchor; overlapping hits dropped server-side"
+	},
+	{
+		"id": 22,
+		"prompt": "I passed open_only and got everything — show only open seats",
+		"path": ["search_classes"],
+		"notes": "unknown-param recovery: correct to availability has_seat / --open, explain the mistake"
+	},
+	{
+		"id": 23,
+		"prompt": "Get details for BLARG 999 XX-00 FA2026",
+		"path": ["get_classes"],
+		"notes": "garbage-ID handling: not_found verdict with closest suggestions, no fabrication"
+	},
+	{
+		"id": 24,
+		"prompt": "Compare CSCI 62 at Mudd vs Pomona — which should I take?",
+		"path": ["get_classes", "get_classes"],
+		"notes": "cross-college same-number compare; distinguish by college ID, per-section seats"
+	},
+	{
+		"id": 25,
+		"prompt": "Does the TBA section of ECON 101 conflict with my Tuesday lab?",
+		"path": ["get_classes", "check_schedule"],
+		"notes": "TBA section has unknown meeting times: it is skipped, not conflict-free. Report complete:false + skipped_tba and say the overlap cannot be determined"
+	},
+	{
+		"id": 26,
+		"prompt": "Are there any weekend classes I can take?",
+		"path": ["search_classes"],
+		"notes": "weekend search: days filter including S/U; mostly PE variations"
+	}
+]

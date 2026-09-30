@@ -1,0 +1,24 @@
+name = "5c-index-proxy"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+
+# --- Storage bindings ---
+[[r2_buckets]]
+binding = "SNAPSHOTS"
+bucket_name = "5c-index-snapshots"
+
+[[kv_namespaces]]
+binding = "META"
+# TODO(deploy): replace with the real namespace id from `wrangler kv namespace create META`
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+# --- Cron: quick current-term refresh every 2 min + full prewarm daily ---
+[triggers]
+crons = ["*/2 * * * *", "17 6 * * *"]
+
+[vars]
+CURRENT_TERM = "FA2026"
+
+# --- Routes (fill in after DNS; leave commented until the zone exists) ---
+# [[env.production.routes]]
+# route = { pattern = "proxy.5c-index.example/*", zone_name = "example" }

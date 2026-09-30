@@ -1,0 +1,446 @@
+[
+	{
+		"courseAreas": ["1A5", "2DS", "4COR", "CSCI", "DSCI", "LGCS"],
+		"credits": 3,
+		"permCount": 77,
+		"seatsTotal": 204,
+		"seatsFilled": 165,
+		"status": "O",
+		"startDate": { "year": 2026, "month": 8, "day": 31 },
+		"endDate": { "year": 2026, "month": 12, "day": 18 },
+		"instructors": [{ "name": "Zach Dodds" }],
+		"course": {
+			"code": {
+				"department": "CSCI",
+				"courseNumber": 5,
+				"suffix": "",
+				"affiliation": "HM"
+			},
+			"title": "Introduction to Computer Science",
+			"description": "IIntroduction to the heart  of computer science. Students engage in computational problem-solving techniques and gain experience with the design, implementation, testing, and documentation of programs in a high-level language. In addition, students learn to design digital devices, program in a small machine language, recognize computing's inherent limitations, and understand how computers operate in practice. Societal and ethical issues related to computer science are central.",
+			"primaryAssociation": "HM",
+			"potentialError": false
+		},
+		"schedules": [
+			{
+				"startTime": 34500,
+				"endTime": 39000,
+				"days": ["T", "R"],
+				"locations": ["Galileo Hall MCAL"]
+			}
+		],
+		"potentialError": false,
+		"identifier": {
+			"department": "CSCI",
+			"courseNumber": 5,
+			"suffix": "",
+			"affiliation": "HM",
+			"sectionNumber": 1,
+			"year": 2026,
+			"term": "FA",
+			"half": null
+		}
+	},
+	{
+		"courseAreas": ["CSCI", "LGCS"],
+		"credits": 0.5,
+		"permCount": 0,
+		"seatsTotal": 24,
+		"seatsFilled": 10,
+		"status": "O",
+		"startDate": { "year": 2026, "month": 8, "day": 31 },
+		"endDate": { "year": 2026, "month": 10, "day": 16 },
+		"instructors": [{ "name": "Joseph Osborn" }],
+		"course": {
+			"code": {
+				"department": "CSCI",
+				"courseNumber": 50,
+				"suffix": "",
+				"affiliation": "PO"
+			},
+			"title": "Fundamentals of Programming",
+			"description": "A half-semester introduction to the basic elements of computer programming in Python. Topics include control flow; basic data structures; reading and writing files; and debugging programs. Special emphasis on working with and making sense of data in order to connect course material with applications in other disciplines.  No previous programming experience is required or expected.  May be taken concurrently with CSCI051 PO.  May not be taken after any of CSCI051 PO, CSCI051P PO, CSCI051A PO, CSCI005 HM, CSCI004 PZ, CSCI040 CM.",
+			"primaryAssociation": "PO",
+			"potentialError": false
+		},
+		"schedules": [
+			{
+				"startTime": 47700,
+				"endTime": 52200,
+				"days": ["T", "R"],
+				"locations": ["Lincoln 1125"]
+			}
+		],
+		"potentialError": false,
+		"identifier": {
+			"department": "CSCI",
+			"courseNumber": 50,
+			"suffix": "",
+			"affiliation": "PO",
+			"sectionNumber": 1,
+			"year": 2026,
+			"term": "FA",
+			"half": { "prefix": "F", "number": 1 }
+		}
+	},
+	{
+		"courseAreas": ["1A5", "4COR", "5QUA", "MATH"],
+		"credits": 4,
+		"permCount": 0,
+		"seatsTotal": 28,
+		"seatsFilled": 26,
+		"status": "O",
+		"startDate": { "year": 2026, "month": 8, "day": 31 },
+		"endDate": { "year": 2026, "month": 12, "day": 18 },
+		"instructors": [{ "name": "Jon Jacobsen" }],
+		"course": {
+			"code": {
+				"department": "MATH",
+				"courseNumber": 19,
+				"suffix": "",
+				"affiliation": "HM"
+			},
+			"title": "Single & Multivariable Calculus",
+			"description": "A robust introduction to multivariable calculus together with a comprehensive review of the theory and techniques of differential and integral calculus of a single variable. Topics include limits, continuity, derivatives, definite integrals, infinite series, Taylor approximations, vectors, equations of lines and planes, partial derivatives, double and triple integrals, linear approximations, the gradient, directional derivatives and the Jacobian, optimization and the second derivative test, higher-order derivatives, vector fields, curl, divergence, path integrals, Green's theorem, flux and surface integrals, Stokes and Gauss Theorems.",
+			"primaryAssociation": "HM",
+			"potentialError": false
+		},
+		"schedules": [
+			{
+				"startTime": 34500,
+				"endTime": 39000,
+				"days": ["M", "W"],
+				"locations": ["Shanahan Center B460"]
+			}
+		],
+		"potentialError": false,
+		"identifier": {
+			"department": "MATH",
+			"courseNumber": 19,
+			"suffix": "",
+			"affiliation": "HM",
+			"sectionNumber": 1,
+			"year": 2026,
+			"term": "FA",
+			"half": null
+		}
+	},
+	{
+		"courseAreas": [
+			"1A3",
+			"2FYA",
+			"2RES",
+			"4HSS",
+			"5HUM",
+			"5IUG",
+			"5IUL",
+			"AFRI"
+		],
+		"credits": 1,
+		"permCount": 0,
+		"seatsTotal": 25,
+		"seatsFilled": 23,
+		"status": "R",
+		"startDate": { "year": 2026, "month": 8, "day": 31 },
+		"endDate": { "year": 2026, "month": 12, "day": 18 },
+		"instructors": [{ "name": "Maryan Soliman" }],
+		"course": {
+			"code": {
+				"department": "AFRI",
+				"courseNumber": 10,
+				"suffix": "A",
+				"affiliation": "AF"
+			},
+			"title": "Intro to Africana Studies",
+			"description": "This class will serve as a general introduction to Africana Studies. Africana studies, while still relatively young, has a vibrant history that traces the lives and scholarship of people from African descent. Its complex and latent development in academia follows from the socio-political marginalization of people within the African diaspora. Nevertheless, resilience and perseverance will be repeated themes as we study how, through different techniques and modes of understanding, people of the African diaspora have continually challenged the western hegemony of academic study.\n",
+			"primaryAssociation": "SC",
+			"potentialError": false
+		},
+		"schedules": [
+			{
+				"startTime": 47700,
+				"endTime": 52200,
+				"days": ["T", "R"],
+				"locations": ["Humanities Building 105"]
+			}
+		],
+		"potentialError": false,
+		"identifier": {
+			"department": "AFRI",
+			"courseNumber": 10,
+			"suffix": "A",
+			"affiliation": "AF",
+			"sectionNumber": 1,
+			"year": 2026,
+			"term": "FA",
+			"half": null
+		}
+	},
+	{
+		"courseAreas": [
+			"1A3",
+			"2RES",
+			"4HSS",
+			"5HUM",
+			"AFRI",
+			"AMST",
+			"HIST",
+			"POLI"
+		],
+		"credits": 1,
+		"permCount": 1,
+		"seatsTotal": 15,
+		"seatsFilled": 18,
+		"status": "C",
+		"startDate": { "year": 2026, "month": 8, "day": 31 },
+		"endDate": { "year": 2026, "month": 12, "day": 18 },
+		"instructors": [{ "name": "Maryan Soliman" }],
+		"course": {
+			"code": {
+				"department": "AFRI",
+				"courseNumber": 116,
+				"suffix": "",
+				"affiliation": "AF"
+			},
+			"title": "Marxism & the Black Radical Trad",
+			"description": "Marxism has had a long and vibrant relationship with Black liberation movements worldwide - from early twentieth-century Harlem to postwar anti-colonial struggles to the Black Panther Party. Such thinkers and activists have linked their efforts to Marx, Lenin, and other central figures, while simultaneously molding Marxism to address the circumstances of people of African descent and infusing the philosophy with approaches from the Black radical tradition. The course will examine classic Marxist texts alongside Black radical contributions and interventions to deepen our understanding of racial capitalism and to illuminate possibilities for liberation that come from a Marxist praxis deeply engaged with important approaches in Black thought. ",
+			"primaryAssociation": "SC",
+			"potentialError": false
+		},
+		"schedules": [
+			{
+				"startTime": 53100,
+				"endTime": 57600,
+				"days": ["T", "R"],
+				"locations": ["Humanities Building 105"]
+			}
+		],
+		"potentialError": false,
+		"identifier": {
+			"department": "AFRI",
+			"courseNumber": 116,
+			"suffix": "",
+			"affiliation": "AF",
+			"sectionNumber": 1,
+			"year": 2026,
+			"term": "FA",
+			"half": null
+		}
+	},
+	{
+		"courseAreas": ["CSCI", "LGCS"],
+		"credits": 0.5,
+		"permCount": 0,
+		"seatsTotal": 24,
+		"seatsFilled": 9,
+		"status": "O",
+		"startDate": { "year": 2026, "month": 8, "day": 31 },
+		"endDate": { "year": 2026, "month": 10, "day": 16 },
+		"instructors": [{ "name": "Joseph Osborn" }],
+		"course": {
+			"code": {
+				"department": "CSCI",
+				"courseNumber": 50,
+				"suffix": "",
+				"affiliation": "PO"
+			},
+			"title": "Fundamentals of Programming",
+			"description": "A half-semester introduction to the basic elements of computer programming in Python. Topics include control flow; basic data structures; reading and writing files; and debugging programs. Special emphasis on working with and making sense of data in order to connect course material with applications in other disciplines.  No previous programming experience is required or expected.  May be taken concurrently with CSCI051 PO.  May not be taken after any of CSCI051 PO, CSCI051P PO, CSCI051A PO, CSCI005 HM, CSCI004 PZ, CSCI040 CM.",
+			"primaryAssociation": "PO",
+			"potentialError": false
+		},
+		"schedules": [
+			{
+				"startTime": 53100,
+				"endTime": 57600,
+				"days": ["T", "R"],
+				"locations": ["Edmunds 101"]
+			}
+		],
+		"potentialError": false,
+		"identifier": {
+			"department": "CSCI",
+			"courseNumber": 50,
+			"suffix": "",
+			"affiliation": "PO",
+			"sectionNumber": 2,
+			"year": 2026,
+			"term": "FA",
+			"half": { "prefix": "F", "number": 1 }
+		}
+	},
+	{
+		"courseAreas": ["1A4", "1P2", "5NAT", "BIOL", "MOBI", "NEUR"],
+		"credits": 1,
+		"permCount": 9,
+		"seatsTotal": 26,
+		"seatsFilled": 36,
+		"status": "C",
+		"startDate": { "year": 2026, "month": 8, "day": 31 },
+		"endDate": { "year": 2026, "month": 12, "day": 18 },
+		"instructors": [{ "name": "Jonathan Moore" }, { "name": "Ross Pringle" }],
+		"course": {
+			"code": {
+				"department": "BIOL",
+				"courseNumber": 40,
+				"suffix": "",
+				"affiliation": "PO"
+			},
+			"title": "Introductory Genetics w/Lab",
+			"description": "Coverage of the principles of heredity. Topics include transmission genetics, population genetics and molecular genetics. Laboratory provides opportunities for students to apply a range of experimental approaches to ask and answer genetic questions in a variety of model organisms.P/NP grading only.",
+			"primaryAssociation": "PO",
+			"potentialError": false
+		},
+		"schedules": [
+			{
+				"startTime": 34500,
+				"endTime": 39000,
+				"days": ["T", "R"],
+				"locations": ["Seaver Commons 102"]
+			},
+			{
+				"startTime": 47700,
+				"endTime": 61200,
+				"days": ["M"],
+				"locations": ["Seaver South Laboratory 121"]
+			}
+		],
+		"potentialError": false,
+		"identifier": {
+			"department": "BIOL",
+			"courseNumber": 40,
+			"suffix": "",
+			"affiliation": "PO",
+			"sectionNumber": 1,
+			"year": 2026,
+			"term": "FA",
+			"half": null
+		}
+	},
+	{
+		"courseAreas": ["2FYA", "2NS", "5NAT", "ASTR", "NSCI"],
+		"credits": 1,
+		"permCount": 26,
+		"seatsTotal": 40,
+		"seatsFilled": 27,
+		"status": "O",
+		"startDate": { "year": 2026, "month": 8, "day": 31 },
+		"endDate": { "year": 2026, "month": 12, "day": 18 },
+		"instructors": [{ "name": "Janet Sheung" }, { "name": "Anna Wenzel" }],
+		"course": {
+			"code": {
+				"department": "ASTR",
+				"courseNumber": 2,
+				"suffix": "L",
+				"affiliation": "KS"
+			},
+			"title": "Operation Spaceflight",
+			"description": "How does science advance human knowledge? This course is offered in partnership with the National Center for Earth and Space Science Education (NCESSE). Students will be divided into ten interdisciplinary teams and compete to write the best proposal for a micro-gravity experiment to be performed by astronauts on the International Space Station (ISS). The winning experiment will be launched to the ISS in late Spring 2027. Course meets Natural Science general education requirement. ",
+			"primaryAssociation": "SC",
+			"potentialError": false
+		},
+		"schedules": [
+			{
+				"startTime": 48600,
+				"endTime": 51600,
+				"days": ["M", "W", "F"],
+				"locations": ["Nucleus E208"]
+			}
+		],
+		"potentialError": false,
+		"identifier": {
+			"department": "ASTR",
+			"courseNumber": 2,
+			"suffix": "L",
+			"affiliation": "KS",
+			"sectionNumber": 1,
+			"year": 2026,
+			"term": "FA",
+			"half": null
+		}
+	},
+	{
+		"courseAreas": ["1A2", "2SS", "4HSS", "5SOC", "NEUR", "PSYC"],
+		"credits": 1,
+		"permCount": 3,
+		"seatsTotal": 25,
+		"seatsFilled": 26,
+		"status": "C",
+		"startDate": { "year": 2026, "month": 8, "day": 31 },
+		"endDate": { "year": 2026, "month": 12, "day": 18 },
+		"instructors": [{ "name": "Mita Banerjee" }],
+		"course": {
+			"code": {
+				"department": "PSYC",
+				"courseNumber": 10,
+				"suffix": "",
+				"affiliation": "PZ"
+			},
+			"title": "Introduction to Psychology",
+			"description": "The purpose of the course is to introduce the student to psychology as it developed from a nonscientific interest to a scientific approach to human behavior. Special attention will be given to some of the major systems, issues and methods involved in contemporary psychology. Students will be expected to participate in research studies in psychology or complete an approved alternative.",
+			"primaryAssociation": "PZ",
+			"potentialError": false
+		},
+		"schedules": [
+			{
+				"startTime": 39600,
+				"endTime": 44100,
+				"days": ["M", "W"],
+				"locations": ["Broad Hall 207"]
+			}
+		],
+		"potentialError": false,
+		"identifier": {
+			"department": "PSYC",
+			"courseNumber": 10,
+			"suffix": "",
+			"affiliation": "PZ",
+			"sectionNumber": 1,
+			"year": 2026,
+			"term": "FA",
+			"half": null
+		}
+	},
+	{
+		"courseAreas": ["2FYA", "2SS", "4HSS", "5HUM", "ECON"],
+		"credits": 1,
+		"permCount": 26,
+		"seatsTotal": 20,
+		"seatsFilled": 19,
+		"status": "R",
+		"startDate": { "year": 2026, "month": 8, "day": 31 },
+		"endDate": { "year": 2026, "month": 12, "day": 18 },
+		"instructors": [{ "name": "Nicholas Kacher" }],
+		"course": {
+			"code": {
+				"department": "ECON",
+				"courseNumber": 50,
+				"suffix": "",
+				"affiliation": "SC"
+			},
+			"title": "Principles of Economics",
+			"description": "This class is designed to help students begin to develop economic analysis by developing a set of approaches to analyze how interactions between individuals, companies, and policymakers generate society-wide outcomes. This includes understanding foundational economic theories from microeconomics and macroeconomics, developing familiarity with using data, applying both theory and data to help explain pressing economic issues and critically evaluate policy\noptions, and presenting your ideas and analysis verbally and in writing. This course satisfes Social Science GE. Credit not available for students who have completed ECON051 SC or ECON052 SC. ",
+			"primaryAssociation": "SC",
+			"potentialError": false
+		},
+		"schedules": [
+			{
+				"startTime": 34500,
+				"endTime": 39000,
+				"days": ["T", "R"],
+				"locations": ["Humanities Building 203"]
+			}
+		],
+		"potentialError": false,
+		"identifier": {
+			"department": "ECON",
+			"courseNumber": 50,
+			"suffix": "",
+			"affiliation": "SC",
+			"sectionNumber": 1,
+			"year": 2026,
+			"term": "FA",
+			"half": null
+		}
+	}
+]

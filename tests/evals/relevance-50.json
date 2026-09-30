@@ -1,0 +1,380 @@
+[
+	{
+		"id": 1,
+		"query": "CSCI 051",
+		"expect_top": "CSCI 051 PO-01 FA2026",
+		"accept_any_of": ["CSCI 051 PO-02 FA2026"],
+		"note": "exact code; verified total=2, top-2 PO-01 then PO-02"
+	},
+	{
+		"id": 2,
+		"query": "MATH 019",
+		"expect_top": "MATH 019 HM-01 FA2026",
+		"note": "exact code; verified total=8"
+	},
+	{
+		"id": 3,
+		"query": "ECON 101",
+		"expect_top": "ECON 101 CM-03 FA2026",
+		"accept_any_of": ["ECON 101 CM-04 FA2026", "ECON 101 CM-01 FA2026"],
+		"note": "exact code; alternates verified via 'microeconomics intermediate' top-3"
+	},
+	{
+		"id": 4,
+		"query": "PSYC 092",
+		"expect_top": "PSYC 092 PZ-01 FA2026",
+		"accept_any_of": ["PSYC 092 CM-01 FA2026"],
+		"note": "exact code; verified total=2, alternates via --no-conflict-with probe"
+	},
+	{
+		"id": 5,
+		"query": "CSCI 158",
+		"expect_top": "CSCI 158 PZ-01 FA2026",
+		"note": "exact code; verified total=1"
+	},
+	{
+		"id": 6,
+		"query": "csci51",
+		"expect_top": "CSCI 051 PO-01 FA2026",
+		"accept_any_of": ["CSCI 051 PO-02 FA2026"],
+		"note": "code variant, no space, lowercase; verified total=2"
+	},
+	{
+		"id": 7,
+		"query": "CSCI 51",
+		"expect_top": "CSCI 051 PO-01 FA2026",
+		"accept_any_of": ["CSCI 051 PO-02 FA2026"],
+		"note": "code variant, unpadded number; verified total=2"
+	},
+	{
+		"id": 8,
+		"query": "math19",
+		"expect_top": "MATH 019 HM-01 FA2026",
+		"note": "code variant, no space, lowercase; verified total=8"
+	},
+	{
+		"id": 9,
+		"query": "econ101",
+		"expect_top": "ECON 101 CM-03 FA2026",
+		"note": "code variant, no space, lowercase; verified total=9"
+	},
+	{
+		"id": 10,
+		"query": "machien learning",
+		"expect_top": "CSCI 158 PZ-01 FA2026",
+		"accept_any_of": ["MATH 129 HM-01 FA2026", "CSCI 051 PO-01 FA2026"],
+		"note": "typo tolerance (machien->machine); verified total=7, top-3 as listed"
+	},
+	{
+		"id": 11,
+		"query": "Dodds",
+		"expect_top": "CSCI 005 HM-01 FA2026",
+		"note": "professor surname; Zach Dodds teaches CSCI 005 HM-01"
+	},
+	{
+		"id": 12,
+		"query": "Schofield",
+		"expect_top": "CSCI 195 HM-01 FA2026",
+		"note": "professor surname; Xanda Schofield; top hit is CS Colloquium, not a lecture course"
+	},
+	{
+		"id": 13,
+		"query": "Bachman",
+		"expect_top": "CSCI 006 PZ-01 FA2026",
+		"note": "professor surname; David Bachman teaches CSCI 006 PZ-01"
+	},
+	{
+		"id": 14,
+		"query": "Keller",
+		"expect_top": "SCI 010L CM-04 FA2026",
+		"note": "professor surname; Jason Keller; lab section course code SCI 010L"
+	},
+	{
+		"id": 15,
+		"query": "Martinez",
+		"expect_top": "BIOL 191F PO-06 FA2026",
+		"note": "professor surname; Daniel Martinez"
+	},
+	{
+		"id": 16,
+		"query": "machine learning",
+		"expect_top": "CSCI 158 PZ-01 FA2026",
+		"note": "concept; verified total=1, unambiguous"
+	},
+	{
+		"id": 17,
+		"query": "climate",
+		"expect_top": "ENGR 137 HM-01 FA2026",
+		"note": "keyword; three Climate Dynamics/Colloquium sections score within 0.1, id tie-break; verified 2026-09-27",
+		"accept_any_of": ["CLES 101 HM-01 FA2026", "CLES 199 HM-01 FA2026"]
+	},
+	{
+		"id": 18,
+		"query": "film",
+		"expect_top": "SPAN 055 PZ-02 FA2026",
+		"note": "concept; top is Spanish conversation-through-film, not a film-studies course; verified total=16"
+	},
+	{
+		"id": 19,
+		"query": "artificial intelligence",
+		"expect_top": "MS 179I HM-01 FA2026",
+		"note": "concept SURPRISE: top hit is 'Nonhuman Media Art', not a CSCI AI course; verified total=6"
+	},
+	{
+		"id": 20,
+		"query": "neuroscience",
+		"expect_top": "NEUR 188L KS-01 FA2026",
+		"note": "concept; top is Senior Thesis Proj Neuroscience; verified total=15"
+	},
+	{
+		"id": 21,
+		"query": "psychology",
+		"filters": {
+			"school": "pitzer",
+			"days": "TR",
+			"after": "10:00",
+			"open": true
+		},
+		"expect_top": "SOC 127 PZ-01 FA2026",
+		"note": "time/day/school combo SURPRISE: top hit is Sociology of Law, not psychology; verified total=3"
+	},
+	{
+		"id": 22,
+		"query": "spanish",
+		"filters": {
+			"before": "12:00"
+		},
+		"expect_top": "SPAN 033 PO-03 FA2026",
+		"note": "time-qualified language search; Intermediate Spanish; verified total=24"
+	},
+	{
+		"id": 23,
+		"filters": {
+			"dept": "MATH",
+			"days": "MWF"
+		},
+		"expect_top": "MATH 023 SC-01 FA2026",
+		"note": "dept + day-pattern browse; Transcendental Functions; verified total=11"
+	},
+	{
+		"id": 24,
+		"filters": {
+			"days": "MWF",
+			"before": "12:00"
+		},
+		"expect_top": "BIOL 043L KS-05 FA2026",
+		"accept_any_of": ["MATH 023 SC-01 FA2026", "MATH 060 PO-03 FA2026"],
+		"note": "pure time-grid browse; verified total=103, top-3 as listed"
+	},
+	{
+		"id": 25,
+		"filters": {
+			"dept": "PE",
+			"days": "S"
+		},
+		"expect_top": "PE 095B JP-11 FA2026",
+		"accept_any_of": ["PE 095B JP-03 FA2026", "PE 095B JP-09 FA2026"],
+		"note": "weekend search; Claremont Yoga sections; verified total=3"
+	},
+	{
+		"id": 26,
+		"filters": {
+			"dept": "CSCI"
+		},
+		"expect_top": "CSCI 006 PZ-01 FA2026",
+		"note": "dept browse; verified total=58"
+	},
+	{
+		"id": 27,
+		"filters": {
+			"dept": "MATH"
+		},
+		"expect_top": "MATH 191 SC-01 FA2026",
+		"note": "dept browse SURPRISE: top is Senior Thesis, not a lecture; verified total=114"
+	},
+	{
+		"id": 28,
+		"filters": {
+			"dept": "ECON"
+		},
+		"expect_top": "ECON 157 CM-01 FA2026",
+		"note": "dept browse; Fin/Manag Modeling MSExcel; verified total=127"
+	},
+	{
+		"id": 29,
+		"filters": {
+			"dept": "ENGL"
+		},
+		"expect_top": "ENGL 199T SC-01 FA2026",
+		"note": "dept browse; top is Senior Thesis in English; verified total=52"
+	},
+	{
+		"id": 30,
+		"filters": {
+			"dept": "CHEM"
+		},
+		"expect_top": "CHEM 197 HM-01 FA2026",
+		"note": "dept browse; top is Readings in Chemistry; verified total=112"
+	},
+	{
+		"id": 31,
+		"filters": {
+			"area": "CSCI"
+		},
+		"expect_top": "CSCI 006 PZ-01 FA2026",
+		"accept_any_of": ["CSCI 183 HM-01 FA2026", "CSCI 005L HM-03 FA2026"],
+		"note": "GE-area filter; verified total=59, top-3 as listed"
+	},
+	{
+		"id": 32,
+		"filters": {
+			"area": "4COR"
+		},
+		"expect_top": "CSCI 005L HM-03 FA2026",
+		"accept_any_of": ["PHYS 050 HM-10 FA2026", "CSCI 005 HM-01 FA2026"],
+		"note": "GE-area filter; verified total=93, top-3 as listed"
+	},
+	{
+		"id": 33,
+		"filters": {
+			"area": "2DS"
+		},
+		"expect_top": "CSCI 005 HM-01 FA2026",
+		"accept_any_of": ["MATH 060 SC-01 FA2026", "CSCI 051 PO-01 FA2026"],
+		"note": "GE-area filter; verified total=16, top-3 as listed"
+	},
+	{
+		"id": 34,
+		"filters": {
+			"dept": "PE",
+			"credits": "0.5"
+		},
+		"expect_top": "PE 077E PO-01 FA2026",
+		"accept_any_of": ["PE 080 PO-01 FA2026", "PE 086 PO-01 FA2026"],
+		"note": "half-credit PE filter; verified total=3, top-3 as listed"
+	},
+	{
+		"id": 35,
+		"query": "mathematics",
+		"filters": {
+			"open": true
+		},
+		"expect_top": "MATH 193 HM-01 FA2026",
+		"note": "keyword; exact title-phrase matches now outrank thesis sections; verified 2026-09-27",
+		"accept_any_of": ["MATH 191 SC-01 FA2026", "MATH 196 HM-01 FA2026"]
+	},
+	{
+		"id": 36,
+		"query": "intro computer science",
+		"expect_top": "CSCI 005L HM-03 FA2026",
+		"note": "multi-token SURPRISE: lab section outranks the CSCI 005 lecture; verified total=34"
+	},
+	{
+		"id": 37,
+		"query": "organic chemistry",
+		"expect_top": "CHEM 116L KS-01 FA2026",
+		"note": "exact title Organic Chemistry outranks Organic Chemistry I and lab variants; 5 KS sections tie, id tie-break; verified 2026-09-27",
+		"accept_any_of": ["CHEM 101L PO-01 FA2026", "CHEM 056 HM-01 FA2026"]
+	},
+	{
+		"id": 38,
+		"query": "linear algebra",
+		"expect_top": "MATH 060 PO-03 FA2026",
+		"note": "multi-token; verified total=8"
+	},
+	{
+		"id": 39,
+		"query": "operating systems",
+		"expect_top": "CSCI 134 PO-01 FA2026",
+		"note": "multi-token; verified total=1, unambiguous"
+	},
+	{
+		"id": 40,
+		"query": "single variable calculus",
+		"expect_top": "MATH 019 HM-01 FA2026",
+		"accept_any_of": ["MATH 019 HM-05 FA2026", "MATH 019 HM-03 FA2026"],
+		"note": "multi-token description-style query; verified total=12, top-3 as listed"
+	},
+	{
+		"id": 41,
+		"query": "AI",
+		"expect_top": "ENGR 190BO HM-01 FA2026",
+		"accept_any_of": ["FS 072 PZ-01 FA2026", "CSCI 006 PZ-01 FA2026"],
+		"note": "HARD: 2-letter token matches 1679 descriptions; top is an engineering course, CSCI AI course only 3rd"
+	},
+	{
+		"id": 42,
+		"query": "literature",
+		"expect_top": "CHEM 191 PO-01 FA2026",
+		"accept_any_of": ["FS 081 PZ-01 FA2026", "ENGL 101 SC-01 FA2026"],
+		"note": "HARD: fuzzy description match in chemistry outranks ENGL titles; verified total=8"
+	},
+	{
+		"id": 43,
+		"query": "PSYC 140",
+		"expect_top": null,
+		"accept_any_of": ["PSYC 190 PO-01 FA2026", "PSYC 180 CM-01 FA2026"],
+		"note": "Code-shaped with no match returns empty + guidance (was: fuzzy PSYC 155).",
+		"expect_total": 0
+	},
+	{
+		"id": 44,
+		"query": "QQQ 000",
+		"expect_top": null,
+		"accept_any_of": ["CSCI 050 PO-01 FA2026", "CSCI 050 PO-03 FA2026"],
+		"note": "Nonsense code returns empty + guidance (was: 461 fuzzy hits).",
+		"expect_total": 0
+	},
+	{
+		"id": 45,
+		"query": "cognitive science",
+		"expect_top": "LGCS 011 PO-01 FA2026",
+		"note": "HARD: only 2 hits; program code is LGCS (not COGS), title 'Intro to Cognitive Science'"
+	},
+	{
+		"id": 46,
+		"query": "zzzqqqzzz",
+		"expect_top": null,
+		"expect_total": 0,
+		"note": "negative: gibberish query returns zero hits (verified total=0)"
+	},
+	{
+		"id": 47,
+		"filters": {
+			"code": "ZZZ 999"
+		},
+		"expect_top": null,
+		"expect_total": 0,
+		"note": "negative: bogus --code prefix is a hard constraint, zero hits (verified total=0)"
+	},
+	{
+		"id": 48,
+		"filters": {
+			"dept": "CSCI",
+			"school": "scripps"
+		},
+		"expect_top": null,
+		"expect_total": 0,
+		"note": "negative: impossible dept+school combo, zero hits (verified total=0)"
+	},
+	{
+		"id": 49,
+		"query": "economics",
+		"filters": {
+			"school": "cmc",
+			"before": "12:00"
+		},
+		"expect_top": "ECON 101 CM-01 FA2026",
+		"note": "CMC alias resolves to CM since the alias fix (was: total 0)."
+	},
+	{
+		"id": 50,
+		"query": "history",
+		"filters": {
+			"area": "W1"
+		},
+		"expect_top": null,
+		"expect_total": 0,
+		"note": "negative edge: no history course carries area W1 in FA2026 (verified total=0)"
+	}
+]

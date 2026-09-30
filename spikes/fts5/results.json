@@ -1,0 +1,443 @@
+{
+	"env": {
+		"node": "v24.19.0",
+		"platform": "darwin/arm64",
+		"sqlite": {
+			"sqlite_version()": "3.53.3"
+		},
+		"fts5": true,
+		"minisearch": "7.2.0"
+	},
+	"corpus": {
+		"dataPath": "/tmp/5c-perf-fresh/FA2026.json",
+		"sections": 2188,
+		"jsonBytes": 2406850,
+		"topInstructor": "Jay"
+	},
+	"scales": {
+		"x1": {
+			"docs": 2188,
+			"minisearch": {
+				"buildMs": 67.54329200000001,
+				"queries": {
+					"CSCI 005": {
+						"medianMs": 0.022165999999998576,
+						"p95Ms": 0.03612499999999841,
+						"hits": 2
+					},
+					"CSCI05": {
+						"medianMs": 0.01891700000000185,
+						"p95Ms": 0.02579099999999812,
+						"hits": 2
+					},
+					"\"organic chemistry\"": {
+						"medianMs": 0.0854580000000027,
+						"p95Ms": 0.10441699999999798,
+						"hits": 28
+					},
+					"machien learning": {
+						"medianMs": 0.38437499999997726,
+						"p95Ms": 1.7114579999999933,
+						"hits": 7
+					},
+					"Jay": {
+						"medianMs": 0.40195799999997917,
+						"p95Ms": 0.5397920000000056,
+						"hits": 423
+					},
+					"genetics": {
+						"medianMs": 0.0654169999999965,
+						"p95Ms": 0.08191600000000676,
+						"hits": 7
+					}
+				},
+				"serialized": {
+					"bytes": 1703788,
+					"stringifyMs": 61.359959,
+					"parseMs": 5.397166999999996,
+					"hydrateMs": 27.682832999999988,
+					"hydrateNote": "loadJSON ok (2188 docs)"
+				}
+			},
+			"fts5": {
+				"buildMs": 14.069582999999994,
+				"dbBytes": 2170880,
+				"queries": {
+					"exact-code": {
+						"medianMs": 0.015959000000009382,
+						"p95Ms": 0.020167000000014923,
+						"hits": 2,
+						"note": "column-scoped phrase"
+					},
+					"prefix": {
+						"medianMs": 0.016708999999991647,
+						"p95Ms": 0.020208000000025095,
+						"hits": 8,
+						"note": "codeFlat prefix*"
+					},
+					"phrase": {
+						"medianMs": 0.02704199999999446,
+						"p95Ms": 0.028250000000014097,
+						"hits": 28,
+						"note": "phrase query"
+					},
+					"typo": {
+						"medianMs": 0.00987499999996544,
+						"p95Ms": 0.012249999999994543,
+						"hits": 0,
+						"note": "no fuzzy in FTS5 -> expect 0"
+					},
+					"instructor": {
+						"medianMs": 0.018958999999995285,
+						"p95Ms": 0.03049999999996089,
+						"hits": 19,
+						"note": "column-scoped"
+					},
+					"topical": {
+						"medianMs": 0.019207999999991898,
+						"p95Ms": 0.026917000000025837,
+						"hits": 21,
+						"note": "plain term"
+					},
+					"boosted": {
+						"medianMs": 0.028874999999970896,
+						"p95Ms": 0.03066599999999653,
+						"hits": 29,
+						"note": "bm25(5,5,3,2.5,1.5,1)"
+					}
+				},
+				"trigram": {
+					"buildMs": 53.118124999999964,
+					"dbBytes": 6565888,
+					"typoProbe": {
+						"medianMs": 1.015542000000039,
+						"hits": 1860
+					}
+				}
+			},
+			"relevance": {
+				"minisearch": {
+					"CSCI 005": [
+						"CSCI 005 | Introduction to Computer Science [exact-code]",
+						"CSCI 005 | Introduction to Computer Science [exact-code]"
+					],
+					"CSCI05": [
+						"CSCI 005 | Introduction to Computer Science [exact-code]",
+						"CSCI 005 | Introduction to Computer Science [exact-code]"
+					],
+					"\"organic chemistry\"": [
+						"CHEM 056 | Organic Chemistry I [title-phrase,title-words]",
+						"CHEM 128 | Inorganic Chemistry [title-phrase]",
+						"CHEM 101 | Organic Chemistry w/Laboratory [title-phrase,title-words]"
+					],
+					"machien learning": [
+						"CSCI 158 | Machine Learning [text]",
+						"MATH 129 | Mathematics of Big Data [text]",
+						"CSCI 051 | Introduction to Computer Science [text]"
+					],
+					"Jay": [
+						"CHEM 188L | Sr Thesis Rsrch Project in Chem [instructor:jay]",
+						"PHYS 188L | Sr Thesis Rsrch Project in Phys [instructor:jay]",
+						"NEUR 188L | Senior Thesis Proj Neuroscience [instructor:jay]"
+					],
+					"genetics": [
+						"BIOL 113 | Molecular Genetics [title-phrase,title-words]",
+						"BIOL 143 | Genetics [title-phrase,title-words]",
+						"BIOL 040 | Introductory Genetics w/Lab [title-phrase,title-words]"
+					]
+				},
+				"fts5": {
+					"exact-code": [
+						"CSCI 005 HM | Introduction to Computer Science",
+						"CSCI 005 HM | Introduction to Computer Science"
+					],
+					"prefix": [
+						"CSCI 051L PO | Lab, Intro to Computer Science",
+						"CSCI 051L PO | Lab, Intro to Computer Science",
+						"CSCI 054 PO | Math Foundations of CS"
+					],
+					"phrase": [
+						"CHEM 101L PO | Lab, Organic Chemistry",
+						"CHEM 101L PO | Lab, Organic Chemistry",
+						"CHEM 101L PO | Lab, Organic Chemistry"
+					],
+					"typo": [],
+					"instructor": [
+						"EA 189L KS | EA Science Summer Thesis Res",
+						"EA 190L KS | EA Science 2nd Sem Sr Thesis",
+						"EA 188L KS | EA Science Sr Thesis Res Proj"
+					],
+					"topical": [
+						"BIOL 040 PO | Introductory Genetics w/Lab",
+						"BIOL 040 PO | Introductory Genetics w/Lab",
+						"BIOL 040 PO | Introductory Genetics w/Lab"
+					],
+					"boosted": [
+						"CHEM 101L PO | Lab, Organic Chemistry",
+						"CHEM 101L PO | Lab, Organic Chemistry",
+						"CHEM 101L PO | Lab, Organic Chemistry"
+					]
+				}
+			}
+		},
+		"x5": {
+			"docs": 10940,
+			"minisearch": {
+				"buildMs": 333.20887500000003,
+				"queries": {
+					"CSCI 005": {
+						"medianMs": 0.09050000000002001,
+						"p95Ms": 0.12370799999996507,
+						"hits": 10
+					},
+					"CSCI05": {
+						"medianMs": 0.08979099999999107,
+						"p95Ms": 0.11158299999999599,
+						"hits": 10
+					},
+					"\"organic chemistry\"": {
+						"medianMs": 1.146792000000005,
+						"p95Ms": 2.8675830000000815,
+						"hits": 160
+					},
+					"machien learning": {
+						"medianMs": 0.6161670000000186,
+						"p95Ms": 0.8164160000000038,
+						"hits": 35
+					},
+					"Jay": {
+						"medianMs": 1.8787499999999682,
+						"p95Ms": 3.112707999999998,
+						"hits": 2115
+					},
+					"genetics": {
+						"medianMs": 0.26724999999999,
+						"p95Ms": 0.3752920000000586,
+						"hits": 35
+					}
+				}
+			},
+			"fts5": {
+				"buildMs": 75.97504200000003,
+				"dbBytes": 11104256,
+				"queries": {
+					"exact-code": {
+						"medianMs": 0.03758299999992687,
+						"p95Ms": 0.04212500000005548,
+						"hits": 10,
+						"note": "column-scoped phrase"
+					},
+					"prefix": {
+						"medianMs": 0.03387499999996635,
+						"p95Ms": 0.04108300000007148,
+						"hits": 40,
+						"note": "codeFlat prefix*"
+					},
+					"phrase": {
+						"medianMs": 0.08304199999997763,
+						"p95Ms": 0.09341600000004746,
+						"hits": 140,
+						"note": "phrase query"
+					},
+					"typo": {
+						"medianMs": 0.013500000000021828,
+						"p95Ms": 0.014083000000027823,
+						"hits": 0,
+						"note": "no fuzzy in FTS5 -> expect 0"
+					},
+					"instructor": {
+						"medianMs": 0.04979200000002493,
+						"p95Ms": 0.05470900000000256,
+						"hits": 95,
+						"note": "column-scoped"
+					},
+					"topical": {
+						"medianMs": 0.05050000000005639,
+						"p95Ms": 0.0555419999999458,
+						"hits": 105,
+						"note": "plain term"
+					},
+					"boosted": {
+						"medianMs": 0.07583299999998871,
+						"p95Ms": 0.08791700000006131,
+						"hits": 145,
+						"note": "bm25(5,5,3,2.5,1.5,1)"
+					}
+				}
+			}
+		},
+		"x12": {
+			"docs": 26256,
+			"minisearch": {
+				"buildMs": 858.87425,
+				"queries": {
+					"CSCI 005": {
+						"medianMs": 0.2506670000000213,
+						"p95Ms": 0.2589170000001104,
+						"hits": 24
+					},
+					"CSCI05": {
+						"medianMs": 0.3309160000001157,
+						"p95Ms": 0.6128750000000309,
+						"hits": 24
+					},
+					"\"organic chemistry\"": {
+						"medianMs": 1.9975839999999607,
+						"p95Ms": 2.2578340000000026,
+						"hits": 384
+					},
+					"machien learning": {
+						"medianMs": 1.2709579999998368,
+						"p95Ms": 1.5547089999997752,
+						"hits": 84
+					},
+					"Jay": {
+						"medianMs": 5.489082999999937,
+						"p95Ms": 6.594667000000072,
+						"hits": 5076
+					},
+					"genetics": {
+						"medianMs": 1.0284999999998945,
+						"p95Ms": 1.6746669999999995,
+						"hits": 420
+					}
+				}
+			},
+			"fts5": {
+				"buildMs": 194.75533399999995,
+				"dbBytes": 25882624,
+				"queries": {
+					"exact-code": {
+						"medianMs": 0.04787499999974898,
+						"p95Ms": 0.04804199999989578,
+						"hits": 24,
+						"note": "column-scoped phrase"
+					},
+					"prefix": {
+						"medianMs": 0.0591669999998885,
+						"p95Ms": 0.062207999999827734,
+						"hits": 96,
+						"note": "codeFlat prefix*"
+					},
+					"phrase": {
+						"medianMs": 0.172458000000006,
+						"p95Ms": 0.1849579999998241,
+						"hits": 336,
+						"note": "phrase query"
+					},
+					"typo": {
+						"medianMs": 0.015832999999929598,
+						"p95Ms": 0.01679199999989578,
+						"hits": 0,
+						"note": "no fuzzy in FTS5 -> expect 0"
+					},
+					"instructor": {
+						"medianMs": 0.09387500000002547,
+						"p95Ms": 0.09520900000006804,
+						"hits": 228,
+						"note": "column-scoped"
+					},
+					"topical": {
+						"medianMs": 0.1072079999999005,
+						"p95Ms": 0.10800000000017462,
+						"hits": 252,
+						"note": "plain term"
+					},
+					"boosted": {
+						"medianMs": 0.14741600000024846,
+						"p95Ms": 0.14916700000003402,
+						"hits": 348,
+						"note": "bm25(5,5,3,2.5,1.5,1)"
+					}
+				}
+			}
+		},
+		"x25": {
+			"docs": 54700,
+			"minisearch": {
+				"buildMs": 1930.1367089999999,
+				"queries": {
+					"CSCI 005": {
+						"medianMs": 0.4509579999999005,
+						"p95Ms": 0.5104169999999613,
+						"hits": 50
+					},
+					"CSCI05": {
+						"medianMs": 0.46308300000009694,
+						"p95Ms": 0.476415999999972,
+						"hits": 50
+					},
+					"\"organic chemistry\"": {
+						"medianMs": 3.546041999999943,
+						"p95Ms": 4.633458999999675,
+						"hits": 800
+					},
+					"machien learning": {
+						"medianMs": 2.303458000000319,
+						"p95Ms": 2.90099999999984,
+						"hits": 175
+					},
+					"Jay": {
+						"medianMs": 14.724500000000262,
+						"p95Ms": 20.04095799999959,
+						"hits": 10575
+					},
+					"genetics": {
+						"medianMs": 2.2099590000007083,
+						"p95Ms": 3.2272079999993366,
+						"hits": 875
+					}
+				}
+			},
+			"fts5": {
+				"buildMs": 444.8467499999997,
+				"dbBytes": 52985856,
+				"queries": {
+					"exact-code": {
+						"medianMs": 0.07291699999950652,
+						"p95Ms": 0.07412499999918509,
+						"hits": 50,
+						"note": "column-scoped phrase"
+					},
+					"prefix": {
+						"medianMs": 0.1000000000003638,
+						"p95Ms": 0.111416000000645,
+						"hits": 200,
+						"note": "codeFlat prefix*"
+					},
+					"phrase": {
+						"medianMs": 0.3412079999998241,
+						"p95Ms": 0.3661659999997937,
+						"hits": 700,
+						"note": "phrase query"
+					},
+					"typo": {
+						"medianMs": 0.01679100000001199,
+						"p95Ms": 0.01820800000041345,
+						"hits": 0,
+						"note": "no fuzzy in FTS5 -> expect 0"
+					},
+					"instructor": {
+						"medianMs": 0.17733399999997346,
+						"p95Ms": 0.24812500000007276,
+						"hits": 475,
+						"note": "column-scoped"
+					},
+					"topical": {
+						"medianMs": 0.18995799999993324,
+						"p95Ms": 0.20083299999987503,
+						"hits": 525,
+						"note": "plain term"
+					},
+					"boosted": {
+						"medianMs": 0.2853750000003856,
+						"p95Ms": 0.3002910000004704,
+						"hits": 725,
+						"note": "bm25(5,5,3,2.5,1.5,1)"
+					}
+				}
+			}
+		}
+	},
+	"keptDb": "/var/folders/z9/qlw85d3j5gj1l50nzj85xkt00000gn/T/spike-fts5-x1.db"
+}

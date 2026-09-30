@@ -1,0 +1,6 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store
+.5c-index-debug/
+coverage/

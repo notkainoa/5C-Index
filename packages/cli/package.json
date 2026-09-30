@@ -1,0 +1,28 @@
+{
+	"name": "5c-cli",
+	"version": "0.1.0",
+	"description": "5c \u2014 agent-first CLI for Claremont Colleges (5C) course search.",
+	"type": "module",
+	"bin": {
+		"5c": "./dist/index.js"
+	},
+	"files": ["dist"],
+	"engines": {
+		"node": ">=20"
+	},
+	"scripts": {
+		"build": "tsup",
+		"typecheck": "tsc --noEmit -p tsconfig.json",
+		"test": "vitest run"
+	},
+	"dependencies": {
+		"commander": "15.0.0"
+	},
+	"devDependencies": {
+		"5c-core": "workspace:*",
+		"@types/node": "22.10.2",
+		"tsup": "8.3.5",
+		"typescript": "5.6.3",
+		"vitest": "2.1.8"
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"name": "5c-index",
+	"version": "0.1.0",
+	"private": true,
+	"description": "5C Index — search engine for Claremont Colleges (5C) classes. CLI + MCP + skill.",
+	"type": "module",
+	"packageManager": "pnpm@9.0.0",
+	"engines": {
+		"node": ">=20"
+	},
+	"scripts": {
+		"build": "pnpm -r build",
+		"test": "pnpm -r test",
+		"typecheck": "pnpm -r typecheck",
+		"lint": "biome check .",
+		"eval": "pnpm --filter 5c-core eval",
+		"e2e": "node tests/e2e.mjs",
+		"e2e:live": "node tests/e2e.mjs --live",
+		"smoke": "node tests/smoke.mjs",
+		"gate": "pnpm build && pnpm typecheck && pnpm lint && pnpm -r test && node tests/e2e.mjs"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"typescript": "5.6.3",
+		"vitest": "2.1.8"
+	}
+}

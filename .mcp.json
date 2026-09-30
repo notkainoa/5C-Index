@@ -1,0 +1,9 @@
+{
+	"mcpServers": {
+		"5c-index": {
+			"command": "node",
+			"args": ["./packages/mcp/dist/server.js"],
+			"env": {}
+		}
+	}
+}
