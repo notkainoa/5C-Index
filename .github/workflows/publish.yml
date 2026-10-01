@@ -44,16 +44,26 @@ jobs:
       - uses: pnpm/action-setup@v4
       # Node 24 ships npm >= 11.5.1, which trusted publishing requires.
       # package-manager-cache: false — npm's own advice for release builds.
+      # No registry-url: with it, setup-node writes an _authToken=${NODE_AUTH_TOKEN}
+      # line into .npmrc; with no token secret that expands to empty or a dummy,
+      # npm treats it as "auth configured", and the OIDC exchange never runs —
+      # the exact E404 we hit (npm docs issue #1960). The default registry is
+      # already registry.npmjs.org, so the line buys nothing here anyway.
       - uses: actions/setup-node@v6
         with:
           node-version: 24
-          registry-url: https://registry.npmjs.org
           package-manager-cache: false
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - name: Publish new versions only
         run: |
           set -euo pipefail
+          # Belt and suspenders for the trap above: no token anywhere, so npm
+          # CLI detects the OIDC environment and publishes through the
+          # trusted publisher instead of a classic token publish.
+          npmrc="${NPM_CONFIG_USERCONFIG:-$HOME/.npmrc}"
+          if [ -f "$npmrc" ]; then sed -i '/_authToken/d' "$npmrc"; fi
+          unset NODE_AUTH_TOKEN
           for pkg in packages/cli packages/mcp; do
             name=$(node -p "require('./$pkg/package.json').name")
             version=$(node -p "require('./$pkg/package.json').version")
