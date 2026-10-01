@@ -23,6 +23,16 @@ Search the 5C course catalog (Pomona, CMC, Harvey Mudd, Scripps, Pitzer) via the
 - General knowledge, poetry, advising opinions — answer without tools.
 - Registration/enrollment actions — read-only. Report seats, point to the portal.
 
+## Tool bootstrap
+
+Pick the first that works. Never install anything without asking:
+
+1. MCP tools present (`search_classes` etc.)? Use them.
+2. Else `5c` on PATH (`command -v 5c`)? Use `5c <args>`.
+3. Else run every call as `npx -y @kainoa/5c-cli@latest <args>` — first use downloads the package, after that it is cached. Always `-y`: without it npm prompts and stalls.
+
+If the session will make many calls, you may suggest `npm i -g @kainoa/5c-cli` (puts `5c` on PATH, faster than npx per call). Ask first — it changes the user's machine. Never run it unasked.
+
 ## Available tools (5c MCP server; CLI twins in parentheses)
 
 - `search_classes` (`5c search`) — discovery. Filters: schools, departments, days, time window, instructor, areas, credits_min/max, availability, conflict exclusion, sort, explain. Unknown params are rejected (-32602). Every hit carries `meetings[]`, `credits`, and `potential_error`, so most answers need no second call.
@@ -75,7 +85,7 @@ When the user asks for options ("what should I take?", "find me something that f
 | `stale: true`, or fetch failure | Warn, retry once, report the last snapshot with its timestamp |
 | `E_TERM_NOT_FOUND` / exit 2 | Term not published. `list_terms`, then search a real term — or use fallback only with consent |
 | Rejected params (-32602) | Unknown param name — use `availability` (not `open_only`), `instructor` (singular), `credits_min`/`credits_max` |
-| `5c` not on PATH / command not found | Run commands as `npx @kainoa/5c-cli@latest <args>` — downloads once, then cached. Ask before `npm i -g @kainoa/5c-cli` |
+| `5c` not on PATH / command not found | Bootstrap step 3: `npx -y @kainoa/5c-cli@latest <args>` (downloads once, then cached). Suggest `npm i -g @kainoa/5c-cli` only with consent |
 
 ## Examples
 
