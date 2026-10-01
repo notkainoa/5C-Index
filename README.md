@@ -20,15 +20,15 @@ package — and can be zero-install:
 
 ```bash
 # CLI, zero install:
-npx 5c-cli@latest search "machine learning" --term FA2026 --json
+npx @kainoa/5c-cli@latest search "machine learning" --term FA2026 --json
 
 # CLI, persistent (puts `5c` on PATH):
-npm i -g 5c-cli
+npm i -g @kainoa/5c-cli
 
 # MCP — no clone, no build; add to Claude Code / Codex / Cursor / Desktop:
 {
   "mcpServers": {
-    "5c-index": { "command": "npx", "args": ["-y", "5c-mcp"] }
+    "5c-index": { "command": "npx", "args": ["-y", "@kainoa/5c-mcp"] }
   }
 }
 
@@ -74,7 +74,7 @@ resolves only when it is unique — several matches come back as candidates.
 Stdio (default):
 
 ```bash
-npx -y 5c-mcp
+npx -y @kainoa/5c-mcp
 ```
 
 Experimental stateless Streamable HTTP on localhost (`POST /mcp`). It binds
@@ -82,7 +82,7 @@ Experimental stateless Streamable HTTP on localhost (`POST /mcp`). It binds
 distribution yet:
 
 ```bash
-npx -y 5c-mcp --http --port 3000
+npx -y @kainoa/5c-mcp --http --port 3000
 ```
 
 Tools: `search_classes` · `get_classes` · `check_schedule` · `list_terms` · `get_course_history`.

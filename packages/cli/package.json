@@ -1,5 +1,5 @@
 {
-	"name": "5c-cli",
+	"name": "@kainoa/5c-cli",
 	"version": "0.4.0",
 	"description": "5c — agent-first CLI for Claremont Colleges (5C) course search.",
 	"type": "module",
@@ -21,7 +21,7 @@
 		"cli"
 	],
 	"bin": {
-		"5c": "./dist/index.js"
+		"5c": "dist/index.js"
 	},
 	"files": ["dist"],
 	"engines": {

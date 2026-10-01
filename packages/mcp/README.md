@@ -1,4 +1,4 @@
-# 5c-mcp
+# @kainoa/5c-mcp
 
 MCP server for the Claremont Colleges (5C) course catalog — 5 read-only tools
 over the shared 5c-core engine: `search_classes` · `get_classes` ·
@@ -17,17 +17,17 @@ build:
 ```json
 {
   "mcpServers": {
-    "5c-index": { "command": "npx", "args": ["-y", "5c-mcp"] }
+    "5c-index": { "command": "npx", "args": ["-y", "@kainoa/5c-mcp"] }
   }
 }
 ```
 
 Requires Node 20 or newer. Experimental stateless Streamable HTTP on localhost:
-`npx -y 5c-mcp --http --port 3000`.
+`npx -y @kainoa/5c-mcp --http --port 3000`.
 
 Data comes from [HyperSchedule](https://hyperschedule.io) (the 5C registrars'
 catalogs) through a local snapshot cache; seats are snapshots, always quoted
 with `fetched_at` and a `stale` flag.
 
-The CLI twin ([`5c-cli`](https://www.npmjs.com/package/5c-cli)) and docs:
+The CLI twin ([`@kainoa/5c-cli`](https://www.npmjs.com/package/@kainoa/5c-cli)) and docs:
 [notkainoa/5C-Index](https://github.com/notkainoa/5C-Index).

@@ -1,5 +1,5 @@
 {
-	"name": "5c-mcp",
+	"name": "@kainoa/5c-mcp",
 	"version": "0.4.0",
 	"description": "5C Index MCP server — 5 tools over the shared 5c-core engine.",
 	"type": "module",
@@ -20,7 +20,7 @@
 		"course-search"
 	],
 	"bin": {
-		"5c-mcp": "./dist/server.js"
+		"5c-mcp": "dist/server.js"
 	},
 	"files": ["dist"],
 	"engines": {

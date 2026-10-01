@@ -27,9 +27,9 @@ Truthfulness pass over the whole tool surface; docs regenerated from the code.
 - Skill docs regenerated: real flag names (`--exclude-conflicts-with`), no
   `level` filter, staleness by the `stale` flag rather than a 24h clock,
   coverage and eligibility caveats, and a recommendation flow.
-- Tools ship on npm: CLI via `npx 5c-cli@latest` (`npm i -g 5c-cli` for `5c` on
-  PATH), MCP host config `npx -y 5c-mcp`. SKILL.md now tells agents how to run
-  without a local checkout.
+- Tools ship on npm: CLI via `npx @kainoa/5c-cli@latest` (`npm i -g @kainoa/5c-cli`
+  for `5c` on PATH), MCP host config `npx -y @kainoa/5c-mcp`. SKILL.md now tells
+  agents how to run without a local checkout.
 
 ## 0.3.0 — 2026-09-25
 

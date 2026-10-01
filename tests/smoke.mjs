@@ -3,13 +3,16 @@
  * Clean-install smoke test: proves the packages work when they are not this
  * checkout.
  *
+ * - `npm publish --dry-run` each adapter first: the publish normalizer is NOT
+ *   run by `npm pack`, so this is the only place that catches npm silently
+ *   rewriting (or removing) manifest fields at publish time.
  * - `npm pack` each adapter, then install the tarball into a throwaway prefix
  *   (this is the only way to catch packaging mistakes: missing `files`,
  *   `workspace:*` leaking into dependencies, an engine range nobody satisfies).
- * - Run the installed CLI `version` with the upstream pointed at a dead port:
- *   it must exit 0 offline.
- * - Start the installed MCP server over stdio and complete an
- *   initialize + tools/list handshake.
+ * - Run the installed CLI `version` through its installed bin link with the
+ *   upstream pointed at a dead port: it must exit 0 offline.
+ * - Start the installed MCP server over stdio (also via its bin link) and
+ *   complete an initialize + tools/list handshake.
  *
  * Usage: pnpm smoke
  */
@@ -60,6 +63,28 @@ async function install(tarball, prefix) {
 	);
 }
 
+/**
+ * npm publish normalizes the manifest in ways npm pack does not (e.g. it
+ * silently rewrites bin entries, and its "was invalid and removed" warning is
+ * real for genuinely broken fields). Fail if it wants to change anything.
+ */
+async function publishDryRunClean(pkgDir) {
+	try {
+		const { stdout, stderr } = await exec(
+			"npm",
+			["publish", "--dry-run", "--access", "public"],
+			{ cwd: pkgDir, timeout: 120000 },
+		);
+		const text = `${stdout}\n${stderr}`;
+		return {
+			clean: !/auto-corrected|was invalid|Unsupported URL/.test(text),
+			detail: text,
+		};
+	} catch (err) {
+		return { clean: false, detail: `${err.message ?? err}` };
+	}
+}
+
 /** Minimal MCP stdio handshake against an installed server. */
 function mcpHandshake(entry, cwd) {
 	return new Promise((resolve) => {
@@ -107,6 +132,14 @@ const work = mkdtempSync(join(tmpdir(), "5c-smoke-"));
 const tarballs = [];
 try {
 	// ---- CLI ----
+	const cliDry = await publishDryRunClean(join(ROOT, "packages", "cli"));
+	check(
+		"cli publish manifest is clean (no npm auto-corrections)",
+		cliDry.clean,
+		cliDry.detail
+			.split("\n")
+			.find((l) => /auto-corrected|was invalid|Unsupported/.test(l)) ?? "",
+	);
 	const cli = await pack(join(ROOT, "packages", "cli"));
 	tarballs.push(cli.tarball);
 	check(
@@ -138,6 +171,14 @@ try {
 	);
 
 	// ---- MCP ----
+	const mcpDry = await publishDryRunClean(join(ROOT, "packages", "mcp"));
+	check(
+		"mcp publish manifest is clean (no npm auto-corrections)",
+		mcpDry.clean,
+		mcpDry.detail
+			.split("\n")
+			.find((l) => /auto-corrected|was invalid|Unsupported/.test(l)) ?? "",
+	);
 	const mcp = await pack(join(ROOT, "packages", "mcp"));
 	tarballs.push(mcp.tarball);
 	check(
@@ -148,7 +189,8 @@ try {
 	);
 	const mcpPrefix = join(work, "mcp");
 	await install(mcp.tarball, mcpPrefix);
-	const server = join(mcpPrefix, "node_modules", "5c-mcp", "dist", "server.js");
+	// Via the bin link: proves the published bin entry survives install.
+	const server = join(mcpPrefix, "node_modules", ".bin", "5c-mcp");
 	const handshake = await mcpHandshake(server, work);
 	check(
 		"installed MCP server answers tools/list",
