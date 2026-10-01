@@ -1,6 +1,6 @@
 {
 	"name": "@kainoa/5c-mcp",
-	"version": "0.4.0",
+	"version": "0.4.1",
 	"description": "5C Index MCP server — 5 tools over the shared 5c-core engine.",
 	"type": "module",
 	"license": "MIT",
