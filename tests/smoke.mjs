@@ -3,9 +3,12 @@
  * Clean-install smoke test: proves the packages work when they are not this
  * checkout.
  *
- * - `npm publish --dry-run` each adapter first: the publish normalizer is NOT
- *   run by `npm pack`, so this is the only place that catches npm silently
- *   rewriting (or removing) manifest fields at publish time.
+ * - Lint each manifest the way npm's publish normalizer sees it, offline:
+ *   npm pack does NOT run the publish normalizer, and `npm publish --dry-run`
+ *   is registry- and auth-dependent, so neither can be the check. The lint
+ *   encodes the two failure modes actually observed: bin values npm would
+ *   silently rewrite at publish time, and unscoped names (npm's typosquat
+ *   guard rejected unscoped 5c-cli as "too similar to cp-cli").
  * - `npm pack` each adapter, then install the tarball into a throwaway prefix
  *   (this is the only way to catch packaging mistakes: missing `files`,
  *   `workspace:*` leaking into dependencies, an engine range nobody satisfies).
@@ -17,7 +20,7 @@
  * Usage: pnpm smoke
  */
 import { execFile, spawn } from "node:child_process";
-import { mkdtempSync, rmSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -64,25 +67,32 @@ async function install(tarball, prefix) {
 }
 
 /**
- * npm publish normalizes the manifest in ways npm pack does not (e.g. it
- * silently rewrites bin entries, and its "was invalid and removed" warning is
- * real for genuinely broken fields). Fail if it wants to change anything.
+ * Offline manifest lint, encoding what npm does at publish time (and what it
+ * rejected): bin entries must be normalize-stable (npm's publish normalizer
+ * rewrites "./dist/x.js" to "dist/x.js" and warns — npm pack never shows this),
+ * and package names must be scoped (the registry's typosquat guard rejected
+ * unscoped 5c-cli as "too similar to cp-cli").
  */
-async function publishDryRunClean(pkgDir) {
-	try {
-		const { stdout, stderr } = await exec(
-			"npm",
-			["publish", "--dry-run", "--access", "public"],
-			{ cwd: pkgDir, timeout: 120000 },
+function manifestLint(pkgDir) {
+	const pkg = JSON.parse(readFileSync(join(pkgDir, "package.json"), "utf8"));
+	const problems = [];
+	if (!pkg.name.startsWith("@kainoa/")) {
+		problems.push(
+			`name "${pkg.name}" is unscoped — the registry's typosquat guard rejected unscoped 5c-cli (cp-cli); use @kainoa/*`,
 		);
-		const text = `${stdout}\n${stderr}`;
-		return {
-			clean: !/auto-corrected|was invalid|Unsupported URL/.test(text),
-			detail: text,
-		};
-	} catch (err) {
-		return { clean: false, detail: `${err.message ?? err}` };
 	}
+	for (const [key, value] of Object.entries(pkg.bin ?? {})) {
+		if (
+			value.startsWith("./") ||
+			value.includes("\\") ||
+			value.includes("..")
+		) {
+			problems.push(
+				`bin["${key}"] = "${value}" — npm's publish normalizer rewrites this (write it normalized: "dist/…")`,
+			);
+		}
+	}
+	return problems;
 }
 
 /** Minimal MCP stdio handshake against an installed server. */
@@ -132,13 +142,11 @@ const work = mkdtempSync(join(tmpdir(), "5c-smoke-"));
 const tarballs = [];
 try {
 	// ---- CLI ----
-	const cliDry = await publishDryRunClean(join(ROOT, "packages", "cli"));
+	const cliLint = manifestLint(join(ROOT, "packages", "cli"));
 	check(
-		"cli publish manifest is clean (no npm auto-corrections)",
-		cliDry.clean,
-		cliDry.detail
-			.split("\n")
-			.find((l) => /auto-corrected|was invalid|Unsupported/.test(l)) ?? "",
+		"cli manifest is publish-clean (scoped name, normalized bin)",
+		cliLint.length === 0,
+		cliLint.join("; "),
 	);
 	const cli = await pack(join(ROOT, "packages", "cli"));
 	tarballs.push(cli.tarball);
@@ -171,13 +179,11 @@ try {
 	);
 
 	// ---- MCP ----
-	const mcpDry = await publishDryRunClean(join(ROOT, "packages", "mcp"));
+	const mcpLint = manifestLint(join(ROOT, "packages", "mcp"));
 	check(
-		"mcp publish manifest is clean (no npm auto-corrections)",
-		mcpDry.clean,
-		mcpDry.detail
-			.split("\n")
-			.find((l) => /auto-corrected|was invalid|Unsupported/.test(l)) ?? "",
+		"mcp manifest is publish-clean (scoped name, normalized bin)",
+		mcpLint.length === 0,
+		mcpLint.join("; "),
 	);
 	const mcp = await pack(join(ROOT, "packages", "mcp"));
 	tarballs.push(mcp.tarball);
