@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="220" role="img" aria-label="5C Index — course search for the Claremont Colleges">
+  <rect x="1.5" y="1.5" width="837" height="217" rx="18" fill="#0F1F2E" stroke="#2A415A" stroke-width="1.5"/>
+  <text x="72" y="94" font-family="-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="56" font-weight="700" fill="#FFFFFF">5C Index</text>
+  <text x="72" y="130" font-family="-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="19" fill="#AFC3D6">Course search for the Claremont Colleges — built for agents, usable by humans</text>
+  <g font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="14" fill="#8FA6BC">
+    <circle cx="76" cy="172" r="7" fill="#4E9BD4"/>
+    <text x="92" y="177">PO</text>
+    <circle cx="164" cy="172" r="7" fill="#C46A76"/>
+    <text x="180" y="177">CM</text>
+    <circle cx="252" cy="172" r="7" fill="#E3B341"/>
+    <text x="268" y="177">HM</text>
+    <circle cx="340" cy="172" r="7" fill="#6FBF8F"/>
+    <text x="356" y="177">SC</text>
+    <circle cx="428" cy="172" r="7" fill="#E09A5A"/>
+    <text x="444" y="177">PZ</text>
+  </g>
+  <text x="768" y="177" text-anchor="end" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="14" fill="#6E86A0">1 engine · 3 interfaces · 5 tools</text>
+</svg>
