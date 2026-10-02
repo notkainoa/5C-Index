@@ -72,10 +72,12 @@ Stdio by default. Experimental localhost-only HTTP: `npx -y @kainoa/5c-mcp --htt
 ### 2. Agent skill and CLI
 
 ```bash
+# user-level: available in every project (what most people want)
+npx skills add notkainoa/5C-Index --skill 5c-classes -a claude-code -a codex -a cursor -g
+
+# project-level: installs into the current project only (drop the -g)
 npx skills add notkainoa/5C-Index --skill 5c-classes -a claude-code -a codex -a cursor
 ```
-
-Project-level by default: it installs into the current project and wires those agents' configs. Add `-g` to install user-level instead, so the skill is available in every project without re-adding it.
 
 This installs the skill that tells an agent which tool to use when, and the guardrails (never fabricate a course; quote seats with `fetched_at`; report `stale` and incomplete coverage; never promise enrollment). The CLI comes along automatically: the skill uses MCP tools if present, else `5c` if on PATH, else runs every call as `npx -y @kainoa/5c-cli@latest`. For long sessions it may suggest a global install — `npm i -g @kainoa/5c-cli` — with your consent first.
 
