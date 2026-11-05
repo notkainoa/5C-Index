@@ -10,7 +10,7 @@
   <a href="#"><img src="https://img.shields.io/badge/node-%3E%3D20-brightgreen" alt="Node ≥ 20"></a>
 </p>
 
-**5C Index** answers the course questions Claremont Colleges students actually ask — what's offered, what fits, what's open, what conflicts, and what used to be offered — for Pomona, Claremont McKenna, Harvey Mudd, Scripps, and Pitzer. It reads the registrars' shared catalog (via [HyperSchedule](https://hyperschedule.io)) through a local snapshot cache, and speaks three dialects over one engine:
+**5C Index** is a CLI, MCP, and agent skill which gives agents the ability to lookup classes at the 5Cs. It answers the course questions Claremont Colleges students actually ask — what's offered, what fits, what's open, what conflicts, and what used to be offered — for Pomona, Claremont McKenna, Harvey Mudd, Scripps, and Pitzer. It reads the registrars' shared catalog (via [HyperSchedule](https://hyperschedule.io)) through a local snapshot cache, and speaks three dialects over one engine:
 
 | Interface | What it is | For |
 |---|---|---|
